@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Kategori Ekle</h1>
+<h1>Kategori Ekleme Listesi</h1>
+<hr>
 
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -30,3 +30,8 @@
     <a asp-action="Index">Listeye Geri Dön</a>
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
