@@ -45,24 +45,12 @@
                         <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Hayır</button>
                     }
                 </td>
-                <td>@Html.DisplayFor(modelItem => item.Mesaj)</td>
+                <td class="message">@Html.DisplayFor(modelItem => item.Mesaj)</td>
                 <td class="actions text-start">
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i> Onayla</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i> Düzenle</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Sil</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-@section Scripts {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#myTable').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
-                }
-            });
-        });
-    </script>
-}

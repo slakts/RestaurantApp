@@ -162,26 +162,18 @@ h1 {
 
 /* Düzenle ve Sil Butonları için Dar Alan */
 .table .actions {
-    width: 120px;
+    width: 200px;
     text-align: left;
 }
 
-/* Footer */
-.footer {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-    padding: 10px;
-    text-align: center;
-    font-size: 8px;
-    width: 100%;
-    position: unset;
-    bottom: 0;
+/* Uzun Mesajlar İçin */
+.table .message {
+    max-width: 500px; /* Mesaj hücresine maksimum genişlik ver */
+    word-wrap: break-word; /* Satır uzunluğunu aşan kelimeleri yeni satıra taşı */
+    white-space: pre-line; /* Satır sonlarında boşluk bırak */
 }
 
-    .footer .footer.text-muted {
-        color: #f8f9fa !important;
-    }
-
-    .footer.text-muted {
-        color: #f8f9fa !important;
-    }
+/* Tablo Hücreleri */
+.table td, .table th {
+    vertical-align: middle;
+}

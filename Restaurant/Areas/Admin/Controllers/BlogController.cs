@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Models;
 using Restaurant.Models.Entities;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Restaurant.Areas.Admin.Controllers
 {
@@ -34,8 +35,7 @@ namespace Restaurant.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var blog = await _context.Blogs
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var blog = await _context.Blogs.FirstOrDefaultAsync(m => m.Id == id);
             if (blog == null)
             {
                 return NotFound();
@@ -51,8 +51,6 @@ namespace Restaurant.Areas.Admin.Controllers
         }
 
         // POST: Admin/Blog/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Name,Email,Onay,Mesaj,Tarih")] Blog blog, IFormFile Image)
@@ -79,7 +77,6 @@ namespace Restaurant.Areas.Admin.Controllers
             return View(blog);
         }
 
-
         // GET: Admin/Blog/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -97,8 +94,6 @@ namespace Restaurant.Areas.Admin.Controllers
         }
 
         // POST: Admin/Blog/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name,Email,Image,Onay,Mesaj,Tarih")] Blog blog)
@@ -139,8 +134,7 @@ namespace Restaurant.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var blog = await _context.Blogs
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var blog = await _context.Blogs.FirstOrDefaultAsync(m => m.Id == id);
             if (blog == null)
             {
                 return NotFound();
@@ -158,9 +152,9 @@ namespace Restaurant.Areas.Admin.Controllers
             if (blog != null)
             {
                 _context.Blogs.Remove(blog);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

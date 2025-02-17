@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Blog</h4>
+<h4>Yorum Onaylama Sayfası</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,23 +13,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+               
+                <input asp-for="Title" class="form-control" hidden/>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+               
+                <input asp-for="Name" class="form-control" hidden/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+               
+                <input asp-for="Email" class="form-control" hidden/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
+               
+                <input asp-for="Image" class="form-control" hidden/>
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -40,23 +38,27 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="Mesaj" class="control-label"></label>
-                <input asp-for="Mesaj" class="form-control" />
+               
+                <input asp-for="Mesaj" class="form-control" hidden/>
                 <span asp-validation-for="Mesaj" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tarih" class="control-label"></label>
-                <input asp-for="Tarih" class="form-control" />
+                
+                <input asp-for="Tarih" class="form-control" hidden/>
                 <span asp-validation-for="Tarih" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Onayla" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-primary">Kayıt Listesi</a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
