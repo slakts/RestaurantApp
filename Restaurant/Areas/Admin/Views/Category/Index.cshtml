@@ -1,13 +1,12 @@
 ﻿@model IEnumerable<Restaurant.Models.Entities.Category>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Kategori Listesi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1 class="text-center">Kategori Listesi</h1>
 <hr>
-
 <p>
     <a asp-action="Create" class="btn btn-primary btn-lg">Kategori Ekle</a>
 </p>
@@ -24,11 +23,10 @@
             <tr>
                 <td class="category-name">@Html.DisplayFor(modelItem => item.Name)</td>
                 <td class="actions text-start">
-                    <!-- Butonları sola hizalamak ve daha dar yapmak için actions sınıfı ekleyin -->
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">
                         <i class="bi bi-pencil"></i> Düzenle
                     </a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
                         <i class="bi bi-trash"></i> Sil
                     </a>
                 </td>

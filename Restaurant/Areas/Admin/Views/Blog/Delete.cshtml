@@ -1,16 +1,15 @@
-﻿@model Restaurant.Models.Entities.Blog
+﻿@model Restaurant.Models.Entities.Menu
 
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<h3 class="text-center">Bu blogu silmek istediğinizden emin misiniz?</h3>
+<h3 class="text-center" style="color: red;">Bu menüyü silmek istediğinizden emin misiniz?</h3>
 <br>
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <h4>Blog Bilgileri</h4>
+        <h4>Menu Bilgileri</h4>
         <hr />
         <br>
         <dl class="row">
@@ -21,40 +20,34 @@
                 @Html.DisplayFor(model => model.Title)
             </dd>
             <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Description)
             </dt>
             <dd class="col-sm-8">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            <dd class="col-sm-8">
-                @Html.DisplayFor(model => model.Email)
+                @Html.DisplayFor(model => model.Description)
             </dd>
             <dt class="col-sm-4">
                 @Html.DisplayNameFor(model => model.Image)
             </dt>
             <dd class="col-sm-8">
-                <img src="@Url.Content(Model.Image)" alt="Blog Resmi" class="table-img" />
+                <img src="@Url.Content(Model.Image)" alt="Menu Resmi" class="table-img" />
             </dd>
             <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.Onay)
+                @Html.DisplayNameFor(model => model.Ozel)
             </dt>
             <dd class="col-sm-8">
-                @Html.DisplayFor(model => model.Onay)
+                @Html.DisplayFor(model => model.Ozel)
             </dd>
             <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.Mesaj)
+                @Html.DisplayNameFor(model => model.Price)
             </dt>
             <dd class="col-sm-8">
-                @Html.DisplayFor(model => model.Mesaj)
+                @Html.DisplayFor(model => model.Price)
             </dd>
             <dt class="col-sm-4">
-                @Html.DisplayNameFor(model => model.Tarih)
+                @Html.DisplayNameFor(model => model.Category.Name)
             </dt>
             <dd class="col-sm-8">
-                @Html.DisplayFor(model => model.Tarih)
+                @Html.DisplayFor(model => model.Category.Name)
             </dd>
         </dl>
 
