@@ -55,16 +55,30 @@ namespace Restaurant.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Name,Email,Image,Onay,Mesaj,Tarih")] Blog blog)
+        public async Task<IActionResult> Create([Bind("Id,Title,Name,Email,Onay,Mesaj,Tarih")] Blog blog, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
+                if (Image != null && Image.Length > 0)
+                {
+                    var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(Image.FileName)}";
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Site/images", uniqueFileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(stream);
+                    }
+
+                    blog.Image = $"/Site/images/{uniqueFileName}";
+                }
+
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(blog);
         }
+
 
         // GET: Admin/Blog/Edit/5
         public async Task<IActionResult> Edit(int? id)

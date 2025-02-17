@@ -60,6 +60,7 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
 }
 
 /* Başlık */
@@ -109,15 +110,6 @@ h1 {
     margin: auto;
 }
 
-/* Durum Göstergesi */
-.status {
-    font-weight: bold;
-    color: #28a745;
-}
-
-    .status:contains("Silindi") {
-        color: #dc3545;
-    }
 
 /* Butonlar */
 .btn {
@@ -131,7 +123,7 @@ h1 {
     transition: background-color 0.3s;
     border: none;
     cursor: pointer;
-    margin-right: 5px; /* Butonları sola yaslamak için sağda boşluk bırak */
+    margin-right: 5px;
 }
 
 .btn-primary {
@@ -174,15 +166,22 @@ h1 {
     text-align: left;
 }
 
-/* Küçültülmüş ve Düzenlenmiş Footer */
+/* Footer */
 .footer {
-    background-color: #ffffff;
-    color: #6c757d;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 10px;
     text-align: center;
-    padding: 5px 0;
-    border-top: 2px solid #e0e0e0;
-    font-size: 0.8rem;
-    position: fixed;
+    font-size: 8px;
     width: 100%;
+    position: unset;
     bottom: 0;
 }
+
+    .footer .footer.text-muted {
+        color: #f8f9fa !important;
+    }
+
+    .footer.text-muted {
+        color: #f8f9fa !important;
+    }
