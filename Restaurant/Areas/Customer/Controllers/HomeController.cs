@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using Restaurant.Models;
 using Restaurant.Models.Entities;
 
@@ -11,10 +12,12 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly VeriTabaniContext _db;
-    public HomeController(ILogger<HomeController> logger, VeriTabaniContext db)
+    private readonly IToastNotification _toast;
+    public HomeController(ILogger<HomeController> logger, VeriTabaniContext db, IToastNotification toast)
     {
         _logger = logger;
         _db = db;
+        _toast = toast;
     }
 
     public IActionResult Index()
@@ -57,6 +60,7 @@ public class HomeController : Controller
         {
             _db.Add(reservation);
             await _db.SaveChangesAsync();
+            _toast.AddSuccessToastMessage("Teþekkür Ederiz Rezervasyon iþleminiz baþarýyla gerçekleþti...");
             return RedirectToAction(nameof(Index));
         }
         return View(reservation);

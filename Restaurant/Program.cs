@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Models;
+using NToastNotify;
 
 namespace Restaurant;
 
@@ -23,6 +24,13 @@ public class Program
         // Add authorization services
         builder.Services.AddAuthorization();
 
+        // Add NToastNotify services
+        builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions
+        {
+            ProgressBar = true,
+            PositionClass = ToastPositions.TopRight
+        });
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -38,6 +46,7 @@ public class Program
         }
 
         app.UseHttpsRedirection();
+        app.UseStaticFiles();
         app.UseRouting();
 
         app.UseAuthorization();
@@ -55,7 +64,9 @@ public class Program
             .WithStaticAssets();
 
         app.MapRazorPages()
-           .WithStaticAssets();
+            .WithStaticAssets();
+
+        app.UseNToastNotify(); // Bu satýrý ekleyin.
 
         app.Run();
     }
