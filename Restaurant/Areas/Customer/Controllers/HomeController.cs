@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Models;
+using Restaurant.Models.Entities;
 
 namespace Restaurant.Areas.Customer.Controllers;
 
@@ -46,6 +47,19 @@ public class HomeController : Controller
     public IActionResult Reservation()
     {
         return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Reservation([Bind("Id,Name,Email,TelefonNo,Sayi,Saat,Tarih")] Reservation reservation)
+    {
+        if (ModelState.IsValid)
+        {
+            _db.Add(reservation);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        return View(reservation);
     }
     public IActionResult Menu()
     {

@@ -30,7 +30,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Saat)</td>
                 <td>@item.Tarih.ToShortDateString()</td>
                 <td class="actions text-start">
-                    <a asp-action="Sil" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
                         <i class="bi bi-trash"></i> Sil
                     </a>
                 </td>
