@@ -45,7 +45,8 @@ public class HomeController : Controller
     }
     public IActionResult Gallery()
     {
-        return View();
+        var gallery = _db.Galleries.ToList();
+        return View(gallery);
     }
     public IActionResult Reservation()
     {

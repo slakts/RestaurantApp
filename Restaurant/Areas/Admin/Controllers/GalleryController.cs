@@ -61,15 +61,18 @@ namespace Restaurant.Areas.Admin.Controllers
             {
                 if (Image != null && Image.Length > 0)
                 {
+                    // Menü klasörüne yüklemek için dosya yolunu ayarlayın
                     var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(Image.FileName)}";
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Site/images", uniqueFileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/menu", uniqueFileName);
 
+                    // Dosyayı kaydedin
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await Image.CopyToAsync(stream);
                     }
 
-                    gallery.Image = $"/Site/images/{uniqueFileName}";
+                    // Kayıt için dosya yolunu güncelleyin
+                    gallery.Image = $"/menu/{uniqueFileName}";
                     _context.Add(gallery);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -78,6 +81,7 @@ namespace Restaurant.Areas.Admin.Controllers
             }
             return View(gallery);
         }
+
 
         // GET: Admin/Gallery/Edit/5
         public async Task<IActionResult> Edit(int? id)
