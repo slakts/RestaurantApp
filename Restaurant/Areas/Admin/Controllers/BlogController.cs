@@ -59,14 +59,14 @@ namespace Restaurant.Areas.Admin.Controllers
                 if (Image != null && Image.Length > 0)
                 {
                     var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(Image.FileName)}";
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Site/images", uniqueFileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/menu", uniqueFileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await Image.CopyToAsync(stream);
                     }
 
-                    blog.Image = $"/Site/images/{uniqueFileName}";
+                    blog.Image = $"/menu/{uniqueFileName}";
                 }
 
                 _context.Add(blog);

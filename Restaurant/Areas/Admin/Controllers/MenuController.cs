@@ -50,14 +50,14 @@ namespace Restaurant.Areas.Admin.Controllers
                 {
                     // Save the uploaded image
                     var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(Image.FileName)}";
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Site/images", uniqueFileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/menu", uniqueFileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await Image.CopyToAsync(stream);
                     }
 
-                    menu.Image = $"/Site/images/{uniqueFileName}";
+                    menu.Image = $"/menu/{uniqueFileName}";
                 }
 
                 _context.Add(menu);

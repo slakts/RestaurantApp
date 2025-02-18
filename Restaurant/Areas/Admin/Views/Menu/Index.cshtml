@@ -37,7 +37,16 @@
                 </td>
                 <td>@Html.DisplayFor(modelItem => item.Title)</td>
                 <td>@Html.DisplayFor(modelItem => item.Price)</td>
-                <td>@Html.DisplayFor(modelItem => item.Ozel)</td>
+                <td>
+                    @if (item.Ozel)
+                    {
+                        <button class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i> Evet </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Hayır </button>
+                    }
+                </td>
                 <td>@Html.DisplayFor(modelItem => item.Category.Name)</td>
 
                 <td class="actions text-start">

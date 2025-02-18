@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NToastNotify;
 using Restaurant.Models;
 using Restaurant.Models.Entities;
@@ -38,6 +39,35 @@ public class HomeController : Controller
     public IActionResult Blog()
     {
         return View();
+    }
+
+    // POST: Admin/Blog/Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Blog([Bind("Id,Title,Name,Email,Onay,Mesaj,Tarih")] Blog blog, IFormFile Image)
+    {
+        if (ModelState.IsValid)
+        {
+            blog.Tarih = DateTime.Now;
+            if (Image != null && Image.Length > 0)
+            {
+                var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(Image.FileName)}";
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/menu", uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Image.CopyToAsync(stream);
+                }
+
+                blog.Image = $"/menu/{uniqueFileName}";
+            }
+
+            _db.Add(blog);
+            await _db.SaveChangesAsync();
+            _toast.AddSuccessToastMessage("Teþekkür ederiz, yorumunuz onaylandýðýnda yorumlar sayfasýnda görebilirsiniz...");
+            return RedirectToAction(nameof(Index));
+        }
+        return View(blog);
     }
     public IActionResult About()
     {
