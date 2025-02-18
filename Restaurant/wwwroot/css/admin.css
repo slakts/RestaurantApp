@@ -29,6 +29,7 @@ body {
 .navbar {
     background: linear-gradient(135deg, #0056b3, #007bff, #66a3ff);
     border-bottom: 3px solid #004494;
+    z-index: 1000;
 }
 
     .navbar .navbar-brand,
@@ -61,6 +62,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     flex: 1;
+    z-index: 1;
 }
 
 /* Başlık */
@@ -80,6 +82,8 @@ h1 {
     border-collapse: collapse;
     margin-top: 20px;
     background: white;
+    position: relative;
+    z-index: 10;
 }
 
     .table th,
@@ -95,6 +99,7 @@ h1 {
         background: #0056b3;
         color: white;
         font-weight: bold;
+        text-align: center; /* Tablodaki başlıkları ortalar */
     }
 
     .table tr:nth-child(even) {
@@ -110,6 +115,17 @@ h1 {
     margin: auto;
 }
 
+/* Resim, Başlık, Fiyat ve Kategori sütunlarını ortala */
+.table td:nth-child(1), /* Resim */
+.table th:nth-child(1),
+.table td:nth-child(2), /* Başlık */
+.table th:nth-child(2),
+.table td:nth-child(3), /* Fiyat */
+.table th:nth-child(3),
+.table td:nth-child(5), /* Kategori */
+.table th:nth-child(5) {
+    text-align: center;
+}
 
 /* Butonlar */
 .btn {
@@ -155,7 +171,6 @@ h1 {
         background-color: #218838;
     }
 
-
 /* Düzenle ve Sil Butonları için Dar Alan */
 .table .actions {
     width: 200px;
@@ -164,12 +179,23 @@ h1 {
 
 /* Uzun Mesajlar İçin */
 .table .message {
-    max-width: 500px; /* Mesaj hücresine maksimum genişlik ver */
-    word-wrap: break-word; /* Satır uzunluğunu aşan kelimeleri yeni satıra taşı */
-    white-space: pre-line; /* Satır sonlarında boşluk bırak */
+    max-width: 500px;
+    word-wrap: break-word;
+    white-space: pre-line;
 }
 
 /* Tablo Hücreleri */
 .table td, .table th {
     vertical-align: middle;
+}
+
+/* Footer */
+.footer {
+    padding: 10px 0;
+    background: linear-gradient(135deg, #0056b3, #007bff, #66a3ff);
+    text-align: center;
+    border-top: 3px solid #004494;
+    color: white;
+    margin-top: 20px;
+    z-index: 1000;
 }

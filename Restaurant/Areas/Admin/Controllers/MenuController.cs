@@ -46,8 +46,6 @@ namespace Restaurant.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Ozel,Price,CategoryId")] Menu menu, IFormFile Image)
         {
-            if (ModelState.IsValid)
-            {
                 if (Image != null && Image.Length > 0)
                 {
                     // Save the uploaded image
@@ -65,7 +63,7 @@ namespace Restaurant.Areas.Admin.Controllers
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            
 
             List<SelectListItem> CategoryValue = (from x in _context.Categories.ToList()
                                                   select new SelectListItem
