@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Restaurant.Models.Entities.About>
 @{
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/_ALayout.cshtml";
@@ -22,8 +22,11 @@
 		Hikayemiz
 	</h3>
 
-	<p class="t-center size32 m-l-r-auto">
-		Fusce at risus eget mi auctor pulvinar. Suspendisse maximus venenatis pretium. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam purus purus, lacinia a scelerisque in, luctus vel felis. Donec odio diam, dignissim a efficitur at, efficitur et est. Pellentesque semper est ut pulvinar ullamcorper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla et leo accumsan, egestas velit ac, fringilla tortor. Sed varius justo sed luctus mattis.
-	</p>
+	@foreach (var item in Model)
+	{
+		<p class="t-center size32 m-l-r-auto">
+			@item.Title
+		</p>
+	}
 </section>
 

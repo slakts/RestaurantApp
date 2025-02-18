@@ -61,17 +61,14 @@ namespace Restaurant.Areas.Admin.Controllers
             {
                 if (Image != null && Image.Length > 0)
                 {
-                    // Menü klasörüne yüklemek için dosya yolunu ayarlayın
                     var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(Image.FileName)}";
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/menu", uniqueFileName);
 
-                    // Dosyayı kaydedin
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await Image.CopyToAsync(stream);
                     }
 
-                    // Kayıt için dosya yolunu güncelleyin
                     gallery.Image = $"/menu/{uniqueFileName}";
                     _context.Add(gallery);
                     await _context.SaveChangesAsync();

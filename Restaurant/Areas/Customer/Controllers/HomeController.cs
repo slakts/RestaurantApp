@@ -41,7 +41,8 @@ public class HomeController : Controller
     }
     public IActionResult About()
     {
-        return View();
+        var about = _db.Abouts.ToList();
+        return View(about);
     }
     public IActionResult Gallery()
     {
