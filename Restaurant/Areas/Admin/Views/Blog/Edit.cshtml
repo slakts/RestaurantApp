@@ -13,23 +13,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-               
-                <input asp-for="Title" class="form-control" hidden/>
+
+                <input asp-for="Title" class="form-control" hidden />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-               
-                <input asp-for="Name" class="form-control" hidden/>
+
+                <input asp-for="Name" class="form-control" hidden />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-               
-                <input asp-for="Email" class="form-control" hidden/>
+
+                <input asp-for="Email" class="form-control" hidden />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-               
-                <input asp-for="Image" class="form-control" hidden/>
+
+                <input asp-for="Image" class="form-control" hidden />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -38,13 +38,13 @@
                 </label>
             </div>
             <div class="form-group">
-               
-                <input asp-for="Mesaj" class="form-control" hidden/>
+
+                <input asp-for="Mesaj" class="form-control" hidden />
                 <span asp-validation-for="Mesaj" class="text-danger"></span>
             </div>
             <div class="form-group">
-                
-                <input asp-for="Tarih" class="form-control" hidden/>
+
+                <input asp-for="Tarih" class="form-control" hidden />
                 <span asp-validation-for="Tarih" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -56,9 +56,12 @@
 </div>
 
 <div>
-    
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+
