@@ -36,6 +36,21 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Contact([Bind("Id,Name,Email,Telefon,Mesaj")] Contact contact)
+    {
+        if (ModelState.IsValid)
+        {
+            contact.Tarih = DateTime.Now;
+            _db.Add(contact);
+            await _db.SaveChangesAsync();
+            _toast.AddSuccessToastMessage("Teþekkür ederiz, mesajýnýz baþarýyla iletildi...");
+            return RedirectToAction(nameof(Index));
+        }
+        return View(contact);
+    }
     public IActionResult Blog()
     {
         return View();
@@ -44,7 +59,7 @@ public class HomeController : Controller
     // POST: Admin/Blog/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Blog([Bind("Id,Title,Name,Email,Onay,Mesaj,Tarih")] Blog blog, IFormFile Image)
+    public async Task<IActionResult> Blog([Bind("Id,Title,Name,Email,Onay,Mesaj")] Blog blog, IFormFile Image)
     {
         if (ModelState.IsValid)
         {
@@ -92,7 +107,7 @@ public class HomeController : Controller
         {
             _db.Add(reservation);
             await _db.SaveChangesAsync();
-            _toast.AddSuccessToastMessage("Teþekkür Ederiz Rezervasyon iþleminiz baþarýyla gerçekleþti...");
+            _toast.AddSuccessToastMessage("Teþekkür ederiz rezervasyon iþleminiz baþarýyla gerçekleþti...");
             return RedirectToAction(nameof(Index));
         }
         return View(reservation);

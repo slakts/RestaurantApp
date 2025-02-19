@@ -28,11 +28,15 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Gallery" asp-action="Index">Galeri</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="About" asp-action="Index">Hakkımızda</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Blog" asp-action="Index">Blog</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Iletisim" asp-action="Index">İletişim</a>
                         </li>
 
                         <li class="nav-item">
@@ -40,14 +44,19 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Gallery" asp-action="Index">Galeri</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Menu" asp-action="Index">Menü</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Menu" asp-action="Index">Menü</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Contact" asp-action="Index">Mesajlar</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Reservation" asp-action="Index">Rezervasyon</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Blog" asp-action="Index">Yorumlar</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -73,5 +82,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
