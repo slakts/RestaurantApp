@@ -12,6 +12,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+
         builder.Services.AddDbContext<VeriTabaniContext>(options =>
             options.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -20,6 +21,7 @@ public class Program
         // Add Identity services
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<VeriTabaniContext>();
+        builder.Services.AddControllersWithViews();
 
         // Add authorization services
         builder.Services.AddAuthorization();
@@ -41,7 +43,6 @@ public class Program
         else
         {
             app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
@@ -66,7 +67,7 @@ public class Program
         app.MapRazorPages()
             .WithStaticAssets();
 
-        app.UseNToastNotify(); // Bu satýrý ekleyin.
+        app.UseNToastNotify();
 
         app.Run();
     }

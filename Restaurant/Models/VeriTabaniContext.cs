@@ -10,6 +10,7 @@ namespace Restaurant.Models
         {
         }
 
+        // DbSet'lerinizi buraya ekleyin
         public DbSet<Category> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
@@ -20,10 +21,10 @@ namespace Restaurant.Models
         public DbSet<Iletisim> Iletisimler { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
-            // Özel model yapılandırmalarını buraya ekleyebilirsiniz.
+            base.OnModelCreating(builder);
+            // Customize the model if needed
         }
     }
 }
