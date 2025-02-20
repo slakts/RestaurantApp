@@ -1,0 +1,56 @@
+﻿@model Restaurant.Models.Entities.Menu
+
+@{
+    ViewData["Title"] = "Düzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Menü Düzenleme Sayfası</h1>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Image" /> <!-- Gizli alan ekleyin -->
+
+    <label>Başlık</label>
+    <input asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br>
+
+    <label>Açıklama</label>
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+    <br>
+
+    <label>Kategori Seçiniz</label>
+    <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="form-control"></select>
+    <br />
+
+    <label>Mevcut Resim</label><br>
+    <img src="@Url.Content(Model.Image)" alt="Menü Resmi" class="table-img"><br><br>
+
+    <label>Menü Resmi Yükleyin</label>
+    <input type="file" asp-for="Image" class="form-control" />
+    <span asp-validation-for="Image" class="text-danger"></span>
+    <br />
+
+    <label class="form-check-label"> 
+        <input class="form-check-input" asp-for="Ozel" /> Özel 
+    </label>
+    <br />
+
+    <label>Fiyat</label>
+    <input asp-for="Price" class="form-control" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+    <br />
+
+    <div class="form-group text-center"> 
+        <input type="submit" value="Güncelle" class="btn btn-primary" /> 
+        <a asp-action="Index" class="btn btn-secondary">Listeye Geri Dön</a> 
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

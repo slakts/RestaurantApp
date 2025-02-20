@@ -1,0 +1,64 @@
+﻿@model Restaurant.Models.Entities.Menu
+
+@{
+    ViewData["Title"] = "Menü Ekleme Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Menü Ekleme Sayfası</h1>
+
+<hr>
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
+                <label for="Title">Başlık</label>
+                <input asp-for="Title" class="form-control" id="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Description">Açıklama</label>
+                <input asp-for="Description" class="form-control" id="Description" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Image">Resim Yükleyin</label>
+                <input type="file" asp-for="Image" class="form-control" id="Image" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check mb-3">
+                <input type="checkbox" asp-for="Ozel" class="form-check-input" id="Ozel" />
+                <label class="form-check-label" for="Ozel">Özel</label>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Price">Fiyat</label>
+                <input asp-for="Price" class="form-control" id="Price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="CategoryId">Kategori Seçiniz</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId" id="CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Ekle" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary ml-2">Listeye Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

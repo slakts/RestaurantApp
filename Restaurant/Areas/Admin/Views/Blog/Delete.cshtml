@@ -1,0 +1,64 @@
+﻿@model Restaurant.Models.Entities.Blog
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="text-center text-danger">Bu kaydı silmek istediğinizden emin misiniz?</h3>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h4>Yorum Bilgileri</h4>
+        <hr>
+        <dl class="row">
+            <dt class="col-sm-4">Başlık</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Title)</dd>
+
+            <dt class="col-sm-4">Ad Soyad</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+            <dt class="col-sm-4">Email</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+            <dt class="col-sm-4">Resim</dt>
+            <dd class="col-sm-8">
+                @if (!string.IsNullOrEmpty(Model.Image))
+                {
+                    <img src="@Url.Content(Model.Image)" alt="Blog Resmi" class="img-fluid" width="150" />
+                }
+                else
+                {
+                    <span>Resim Yok</span>
+                }
+            </dd>
+
+            <dt class="col-sm-4">Onay</dt>
+            <dd class="col-sm-8">
+                @if (Model.Onay)
+                {
+                    <span class="badge bg-success"><i class="bi bi-check-circle"></i> Evet</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger"><i class="bi bi-x-circle"></i> Hayır</span>
+                }
+            </dd>
+
+            <dt class="col-sm-4">Mesaj</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Mesaj)</dd>
+
+            <dt class="col-sm-4">Tarih</dt>
+            <dd class="col-sm-8">@Model.Tarih.ToShortDateString()</dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group text-center">
+                <input type="submit" value="Sil" class="btn btn-danger" /> |
+                <a asp-action="Index" class="btn btn-primary">Listeye Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
