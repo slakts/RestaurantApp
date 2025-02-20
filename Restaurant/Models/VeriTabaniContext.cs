@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Restaurant.Models.Entities;
 
 namespace Restaurant.Models
 {
-    public class VeriTabaniContext : DbContext
+    public class VeriTabaniContext : IdentityDbContext
     {
         public VeriTabaniContext(DbContextOptions<VeriTabaniContext> options)
             : base(options)

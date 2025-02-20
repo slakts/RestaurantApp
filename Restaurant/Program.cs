@@ -13,9 +13,9 @@ public class Program
 
         // Add services to the container.
 
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<VeriTabaniContext>(options =>
-            options.UseSqlServer(
-                builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(connectionString));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
         // Add Identity services
@@ -72,3 +72,4 @@ public class Program
         app.Run();
     }
 }
+
