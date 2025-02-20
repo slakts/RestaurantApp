@@ -1,4 +1,6 @@
-﻿/* Google Fonts: Poppins */
+﻿/*-----admin.css-----*/
+
+/* Google Fonts: Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Genel Ayarlar */
@@ -16,7 +18,7 @@ html {
 /* Sayfa Stili */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #E4E9F7; /* styles.css'deki --body-color */
     color: #333;
     margin: 0;
     padding: 0;
@@ -27,7 +29,7 @@ body {
 
 /* Navbar */
 .navbar {
-    background: linear-gradient(135deg, #0056b3, #007bff, #66a3ff);
+    background: linear-gradient(135deg, #695CFE, #3A3B3C, #F6F5FF); /* styles.css'deki --primary-color ve --primary-color-light */
     border-bottom: 3px solid #004494;
     z-index: 1000;
 }
@@ -69,7 +71,7 @@ body {
 h1 {
     text-align: center;
     font-size: 24px;
-    color: #0056b3;
+    color: #695CFE; /* styles.css'deki --primary-color */
 }
 
 /* Tablo */
@@ -96,7 +98,7 @@ h1 {
     }
 
     .table th {
-        background: #0056b3;
+        background: #695CFE; /* styles.css'deki --primary-color */
         color: white;
         font-weight: bold;
         text-align: center; /* Tablodaki başlıkları ortalar */
@@ -143,11 +145,11 @@ h1 {
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: #695CFE; /* styles.css'deki --primary-color */
 }
 
     .btn-primary:hover {
-        background-color: #0056b3;
+        background-color: #3A3B3C; /* styles.css'deki --primary-color-light */
     }
 
 .btn-lg {
@@ -192,7 +194,7 @@ h1 {
 /* Footer */
 .footer {
     padding: 10px 0;
-    background: linear-gradient(135deg, #0056b3, #007bff, #66a3ff);
+    background: linear-gradient(135deg, #695CFE, #3A3B3C, #F6F5FF); /* styles.css'deki --primary-color ve --primary-color-light */
     text-align: center;
     border-top: 3px solid #004494;
     color: white;
