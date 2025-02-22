@@ -11,21 +11,39 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Servisleri kapsayýcýya ekleyin.
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        // Veritabaný baðlantýsýný yapýlandýr
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+            ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
         builder.Services.AddDbContext<VeriTabaniContext>(options =>
             options.UseSqlServer(connectionString));
+
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-        // Kimlik servislerini ekleyin.
-        builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<VeriTabaniContext>();
-        builder.Services.AddControllersWithViews();
+        // Identity servislerini ekle (Default UI olmadan)
+        builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+        {
+            options.SignIn.RequireConfirmedAccount = true;
+        })
+        .AddEntityFrameworkStores<VeriTabaniContext>()
+        .AddDefaultTokenProviders(); // Þifre sýfýrlama vb. için token saðlayýcýlarý ekler.
 
-        // Yetkilendirme servislerini ekleyin.
+        // Özel giriþ sayfasýný ayarla
+        builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.LoginPath = "/Account/Login"; // Özel login sayfanýn yolu
+            options.AccessDeniedPath = "/Account/AccessDenied"; // Yetkisiz eriþim sayfasý
+            options.LogoutPath = "/Account/Logout"; // Çýkýþ sayfasý
+        });
+
+        // Razor Pages ve MVC servisini ekleyelim (HATA BURADAN KAYNAKLANIYORDU)
+        builder.Services.AddControllersWithViews();
+        builder.Services.AddRazorPages(); // Bunu ekledik!
+
+        // Yetkilendirme servislerini ekle
         builder.Services.AddAuthorization();
 
-        // NToastNotify servislerini ekleyin.
+        // NToastNotify servislerini ekle
         builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions
         {
             ProgressBar = true,
@@ -34,7 +52,7 @@ public class Program
 
         var app = builder.Build();
 
-        // HTTP istek hattýný yapýlandýrýn.
+        // Hata yönetimi
         if (app.Environment.IsDevelopment())
         {
             app.UseMigrationsEndPoint();
@@ -45,16 +63,33 @@ public class Program
             app.UseHsts();
         }
 
+        // Response Cache engelleme (sayfa geri gidildiðinde tekrar giriþ gerektirmesi için)
+        app.Use(async (context, next) =>
+        {
+            await next();
+
+            if (!context.Response.HasStarted)
+            {
+                context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+                context.Response.Headers["Pragma"] = "no-cache";
+                context.Response.Headers["Expires"] = "0";
+            }
+        });
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
-        app.UseAuthentication(); // Bu satýr eklendi
+
+        // Kimlik doðrulama ve yetkilendirme
+        app.UseAuthentication();
         app.UseAuthorization();
 
+        // Statik dosyalar için eþleþme
         app.MapStaticAssets();
 
+        // Rotalarý belirle
         app.MapControllerRoute(
-            name: "Areas",
+            name: "areas",
             pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}")
             .WithStaticAssets();
 
@@ -63,9 +98,10 @@ public class Program
             pattern: "{controller=Home}/{action=Index}/{id?}")
             .WithStaticAssets();
 
-        app.MapRazorPages()
-            .WithStaticAssets();
+        // Razor Pages ekleyelim (Burasý hataya sebep oluyordu)
+        app.MapRazorPages().WithStaticAssets();
 
+        // NToastNotify Kullanýmý
         app.UseNToastNotify();
 
         app.Run();

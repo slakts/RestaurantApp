@@ -89,12 +89,23 @@
             </div>
 
             <div class="bottom-content">
-                <li class="">
+                <li>
                     <a asp-area="Account" asp-controller="Login" asp-action="Logout">
                         <i class='bx bx-log-out icon'></i>
-                        <span class="text nav-text">Çıkış</span>
+                        <span class="text nav-text">Çıkış (GET)</span>
                     </a>
                 </li>
+
+                <!-- POST ile Çıkış -->
+                <li>
+                    <form method="post" asp-area="Account" asp-controller="Login" asp-action="Logout">
+                        <button type="submit" class="logout-button">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text">Çıkış (POST)</span>
+                        </button>
+                    </form>
+                </li>
+
 
                 <li class="mode">
                     <div class="moon-sun">

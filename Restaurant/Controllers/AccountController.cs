@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.Models;
 using Restaurant.Models.Entities;
 
@@ -18,6 +20,7 @@ namespace Restaurant.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Login(User user)
         {
@@ -31,6 +34,19 @@ namespace Restaurant.Controllers
             {
                 return RedirectToAction("Index", "Menu", new { area = "Admin" });
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Önbelleği temizleme ve yönlendirme
+            Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+            return RedirectToAction("Login", "Account");
         }
     }
 }
