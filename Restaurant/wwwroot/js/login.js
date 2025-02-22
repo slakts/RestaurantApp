@@ -1,13 +1,15 @@
-﻿function login() {
+﻿document.querySelector('.btn-login').addEventListener('click', function (event) {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var errorMessage = document.getElementById("error-message");
 
-    if (email === "admin@restaurant.com" && password === "123456 ") {
-        alert("Giriş başarılı! Admin paneline yönlendiriliyorsunuz...");
-        console.log("Admin Girişi:", { email, password });
-        window.location.href = "dashboard.html";
-    } else {
-        errorMessage.textContent = "Geçersiz e-posta veya şifre!";
+    // Örnek: temel doğrulama (isteğe bağlı)
+    if (email.trim() === "" || password.trim() === "") {
+        errorMessage.textContent = "Lütfen tüm alanları doldurun!";
+        event.preventDefault(); // Formun gönderilmesini engelle
+        return;
     }
-}
+
+    // Form gönderimi için engelleme yoksa hata mesajını temizleyin
+    errorMessage.textContent = "";
+});

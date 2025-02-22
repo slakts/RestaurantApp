@@ -18,16 +18,18 @@
 
     <div class="login-container">
         <h2><i class='bx bxs-user'></i> Oturum Aç</h2>
-        <div class="input-group">
-            <i class='bx bxs-envelope'></i>
-            <input type="email" id="email" placeholder="E-posta adresiniz" required>
-        </div>
-        <div class="input-group">
-            <i class='bx bxs-lock-alt'></i>
-            <input type="password" id="password" placeholder="Şifreniz" required>
-        </div>
-        <button class="btn-login" onclick="login()"><i class='bx bx-log-in'></i> Giriş Yap</button>
-        <p class="error-message" id="error-message"></p>
+        <form id="login-form" method="post" action="/Account/Login">
+            <div class="input-group">
+                <i class='bx bxs-envelope'></i>
+                <input type="email" id="email" name="Email" placeholder="E-posta adresiniz" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" id="password" name="Sifre" placeholder="Şifreniz" required>
+            </div>
+            <button type="submit" class="btn-login"><i class='bx bx-log-in'></i> Giriş Yap</button>
+            <p class="error-message" id="error-message"></p>
+        </form>
         <p class="forgot-password"><a href="#">Şifremi Unuttum?</a></p>
     </div>
 

@@ -48,14 +48,10 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+        app.UseAuthentication(); // Bu satýr eklendi
         app.UseAuthorization();
 
         app.MapStaticAssets();
-
-        app.MapControllerRoute(
-            name: "Areas",
-            pattern: "{area=Identity}/{controller=User}/{action=Login}/{id?}")
-            .WithStaticAssets();
 
         app.MapControllerRoute(
             name: "Areas",
