@@ -1,0 +1,125 @@
+﻿/*========login.css========*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap');
+
+:root {
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+    --input-bg: #FFF; /* Değiştirildi */
+    --btn-hover: #695CFE; /* Değiştirildi */
+    --secondary-color: #695CFE; /* Değiştirildi */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--body-color);
+}
+
+.login-container {
+    background: var(--sidebar-color); /* Değiştirildi */
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 12px 40px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        background: var(--body-color);
+        color: var(--text-color);
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+        .input-group input:focus {
+            box-shadow: 0 0 10px var(--secondary-color);
+        }
+
+    .input-group i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--secondary-color);
+        font-size: 18px;
+    }
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .btn-login:hover {
+        background: var(--btn-hover);
+        transform: scale(1.05);
+    }
+
+.forgot-password {
+    margin-top: 10px;
+}
+
+    .forgot-password a {
+        color: var(--primary-color); /* Değiştirildi */
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}

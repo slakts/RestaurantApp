@@ -11,22 +11,21 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-
+        // Servisleri kapsayýcýya ekleyin.
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<VeriTabaniContext>(options =>
             options.UseSqlServer(connectionString));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-        // Add Identity services
+        // Kimlik servislerini ekleyin.
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<VeriTabaniContext>();
         builder.Services.AddControllersWithViews();
 
-        // Add authorization services
+        // Yetkilendirme servislerini ekleyin.
         builder.Services.AddAuthorization();
 
-        // Add NToastNotify services
+        // NToastNotify servislerini ekleyin.
         builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions
         {
             ProgressBar = true,
@@ -35,7 +34,7 @@ public class Program
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
+        // HTTP istek hattýný yapýlandýrýn.
         if (app.Environment.IsDevelopment())
         {
             app.UseMigrationsEndPoint();
@@ -49,10 +48,14 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
-
         app.UseAuthorization();
 
         app.MapStaticAssets();
+
+        app.MapControllerRoute(
+            name: "Areas",
+            pattern: "{area=Identity}/{controller=User}/{action=Login}/{id?}")
+            .WithStaticAssets();
 
         app.MapControllerRoute(
             name: "Areas",
@@ -72,4 +75,3 @@ public class Program
         app.Run();
     }
 }
-

@@ -1,0 +1,37 @@
+﻿@model Restaurant.Models.Entities.User
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel Girişi</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/login.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2><i class='bx bxs-user'></i> Oturum Aç</h2>
+        <div class="input-group">
+            <i class='bx bxs-envelope'></i>
+            <input type="email" id="email" placeholder="E-posta adresiniz" required>
+        </div>
+        <div class="input-group">
+            <i class='bx bxs-lock-alt'></i>
+            <input type="password" id="password" placeholder="Şifreniz" required>
+        </div>
+        <button class="btn-login" onclick="login()"><i class='bx bx-log-in'></i> Giriş Yap</button>
+        <p class="error-message" id="error-message"></p>
+        <p class="forgot-password"><a href="#">Şifremi Unuttum?</a></p>
+    </div>
+
+    <script src="~/js/login.js"></script>
+
+</body>
+</html>

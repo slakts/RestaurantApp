@@ -4,10 +4,9 @@ using Restaurant.Models.Entities;
 
 namespace Restaurant.Models
 {
-    public class VeriTabaniContext : IdentityDbContext
+    public class VeriTabaniContext : DbContext
     {
-        public VeriTabaniContext(DbContextOptions<VeriTabaniContext> options)
-            : base(options)
+        public VeriTabaniContext(DbContextOptions<VeriTabaniContext> options) : base(options)
         {
         }
 
@@ -20,12 +19,6 @@ namespace Restaurant.Models
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Iletisim> Iletisimler { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-            // Customize the model if needed
-        }
+        public DbSet<User> Users { get; set; }
     }
 }

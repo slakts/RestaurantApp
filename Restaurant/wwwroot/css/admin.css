@@ -1,4 +1,4 @@
-﻿/*-----admin.css-----*/
+﻿/*=======admin.css======*/
 
 /* Google Fonts: Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -18,7 +18,7 @@ html {
 /* Sayfa Stili */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #E4E9F7; /* styles.css'deki --body-color */
+    background-color: #E4E9F7; 
     color: #333;
     margin: 0;
     padding: 0;
