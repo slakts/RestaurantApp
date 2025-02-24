@@ -33,12 +33,6 @@
                 <div class="menu">
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a asp-area="" asp-controller="Home" asp-action="Index" target="_blank">
-                                <i class='bx bx-home-alt icon'></i>
-                                <span class="text nav-text">Anasayfa</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
                             <a asp-area="Admin" asp-controller="Gallery" asp-action="Index">
                                 <i class='bx bx-image-alt icon'></i>
                                 <span class="text nav-text">Galeri</span>
@@ -86,6 +80,12 @@
                                 <span class="text nav-text">Yorumlar</span>
                             </a>
                         </li>
+                    <li class="nav-link">
+                        <a asp-area="Admin" asp-controller="User" asp-action="Index">
+                            <i class='bx bx-message-square-detail icon'></i>
+                            <span class="text nav-text">Kullanıcılar</span>
+                        </a>
+                    </li>
                     </ul>
                 </div>
 
