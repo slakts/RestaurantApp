@@ -4,9 +4,9 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
     <div class="col-md-4">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h4 style="color:green">KAYIT FORMU</h4>
@@ -46,8 +46,10 @@
             <button type="submit" class="btn btn-success form-control">Üye Oluştur</button>
         </form>
     </div>
-
 </div>
+}
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

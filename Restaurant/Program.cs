@@ -32,6 +32,12 @@ namespace Restaurant
             builder.Services.AddSingleton<IEmailSender, EmailSender>();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
             builder.Services.AddRazorPages();
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
             builder.Services.AddAuthorization();

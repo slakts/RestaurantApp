@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Models;
 
 namespace Restaurant.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class UserController : Controller
     {
