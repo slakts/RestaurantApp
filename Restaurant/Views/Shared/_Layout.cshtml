@@ -90,7 +90,7 @@
                         </li>
                         <li class="nav-link">
                             <a asp-area="Admin" asp-controller="User" asp-action="Index">
-                                <i class='bx bx-message-square-detail icon'></i>
+                                <i class='bx bx-user-circle icon'></i>
                                 <span class="text nav-text">Kullanıcılar</span>
                             </a>
                         </li>
@@ -104,12 +104,14 @@
                 </div>
 
                 <div class="bottom-content">
+
                     <li>
-                        <a asp-area="Account" asp-controller="Login" asp-action="Logout">
+                    <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <i class='bx bx-log-out icon'></i>
                             <span class="text nav-text">Çıkış</span>
                         </a>
                     </li>
+
                     <li class="mode">
                         <div class="moon-sun">
                             <i class='bx bx-moon icon moon'></i>
@@ -120,6 +122,7 @@
                             <span class="switch"></span>
                         </div>
                     </li>
+
                 </div>
             </div>
     </nav>
