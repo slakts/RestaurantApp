@@ -11,7 +11,6 @@ using Restaurant.Models.Entities;
 
 namespace Restaurant.Areas.Admin.Controllers
 {
-    [Authorize]
     [Area("Admin")]
     public class MenuController : Controller
     {
@@ -20,14 +19,6 @@ namespace Restaurant.Areas.Admin.Controllers
         public MenuController(VeriTabaniContext context)
         {
             _context = context;
-        }
-
-        public MenuController()
-        {
-            // Önbelleği devre dışı bırak
-            Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
-            Response.Headers["Pragma"] = "no-cache";
-            Response.Headers["Expires"] = "0";
         }
 
         // GET: Admin/Menu

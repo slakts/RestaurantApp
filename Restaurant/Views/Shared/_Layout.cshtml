@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Restaurant.Models.Entities
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,99 +29,86 @@
             <i class='bx bx-chevron-right toggle'></i>
         </header>
 
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a asp-area="" asp-controller="Home" asp-action="Index">
-                            <i class='bx bx-home-alt icon'></i>
-                            <span class="text nav-text">Anasayfa</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="Gallery" asp-action="Index">
-                            <i class='bx bx-image-alt icon'></i>
-                            <span class="text nav-text">Galeri</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="About" asp-action="Index">
-                            <i class='bx bx-info-circle icon'></i>
-                            <span class="text nav-text">Hakkımızda</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="Iletisim" asp-action="Index">
-                            <i class='bx bx-map-pin icon'></i>
-                            <span class="text nav-text">İletişim</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="Category" asp-action="Index">
-                            <i class='bx bx-category icon'></i>
-                            <span class="text nav-text">Kategori</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="Menu" asp-action="Index">
-                            <i class='bx bx-food-menu icon'></i>
-                            <span class="text nav-text">Menü</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="Contact" asp-action="Index">
-                            <i class='bx bx-chat icon'></i>
-                            <span class="text nav-text">Mesajlar</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="Reservation" asp-action="Index">
-                            <i class='bx bx-time-five icon'></i>
-                            <span class="text nav-text">Rezervasyon</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a asp-area="Admin" asp-controller="Blog" asp-action="Index">
-                            <i class='bx bx-message-square-detail icon'></i>
-                            <span class="text nav-text">Yorumlar</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" target="_blank">
+                                <i class='bx bx-home-alt icon'></i>
+                                <span class="text nav-text">Anasayfa</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="Gallery" asp-action="Index">
+                                <i class='bx bx-image-alt icon'></i>
+                                <span class="text nav-text">Galeri</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="About" asp-action="Index">
+                                <i class='bx bx-info-circle icon'></i>
+                                <span class="text nav-text">Hakkımızda</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="Iletisim" asp-action="Index">
+                                <i class='bx bx-map-pin icon'></i>
+                                <span class="text nav-text">İletişim</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="Index">
+                                <i class='bx bx-category icon'></i>
+                                <span class="text nav-text">Kategori</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="Menu" asp-action="Index">
+                                <i class='bx bx-food-menu icon'></i>
+                                <span class="text nav-text">Menü</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="Contact" asp-action="Index">
+                                <i class='bx bx-chat icon'></i>
+                                <span class="text nav-text">Mesajlar</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="Reservation" asp-action="Index">
+                                <i class='bx bx-time-five icon'></i>
+                                <span class="text nav-text">Rezervasyon</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a asp-area="Admin" asp-controller="Blog" asp-action="Index">
+                                <i class='bx bx-message-square-detail icon'></i>
+                                <span class="text nav-text">Yorumlar</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="bottom-content">
-                <li>
-                    <a asp-area="Account" asp-controller="Login" asp-action="Logout">
-                        <i class='bx bx-log-out icon'></i>
-                        <span class="text nav-text">Çıkış (GET)</span>
-                    </a>
-                </li>
-
-                <!-- POST ile Çıkış -->
-                <li>
-                    <form method="post" asp-area="Account" asp-controller="Login" asp-action="Logout">
-                        <button type="submit" class="logout-button">
+                <div class="bottom-content">
+                    <li>
+                        <a asp-area="Account" asp-controller="Login" asp-action="Logout">
                             <i class='bx bx-log-out icon'></i>
-                            <span class="text nav-text">Çıkış (POST)</span>
-                        </button>
-                    </form>
-                </li>
-
-
-                <li class="mode">
-                    <div class="moon-sun">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Karanlık Mod</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+                            <span class="text nav-text">Çıkış</span>
+                        </a>
+                    </li>
+                    <li class="mode">
+                        <div class="moon-sun">
+                            <i class='bx bx-moon icon moon'></i>
+                            <i class='bx bx-sun icon sun'></i>
+                        </div>
+                        <span class="mode-text text">Karanlık Mod</span>
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                </div>
             </div>
-        </div>
     </nav>
-
 
     <section class="home">
         <div class="container">
